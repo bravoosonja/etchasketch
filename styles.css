@@ -36,15 +36,16 @@ h1 {
     justify-content: center;
     align-items: center;
     margin: 25px;
-    gap: 30px;
+    gap: 20px;
+    
 }
 
 button {
     background-color: #eee;
     border: none;
-    padding: 1rem;
+    padding: 0.5rem;
     font-size: 1rem;
-    width: 10em;
+    width: 9em;
     border-radius: 1rem;
     color: #EF7C8E;
     box-shadow: 0 0.4rem #dfd9d9;
