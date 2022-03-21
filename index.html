@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-A-Sketch</title>
+    <script src="app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Etch-A-Sketch</h1>
+    <div class="container"></div>
+    <div class="controls">
+      <button id="shake-btn">Shake</button>
+      <button id="rainbow-btn">Rainbow mode</button>
+      <button id="color-btn">Change color</button>
+      <label for="size-slider" id="size-label">16 x 16</label>
+      <input
+        id="size-slider"
+        name="size-slider"
+        type="range"
+        class="range-style"
+        value="16"
+        min="16"
+        max="64"
+      />
+    </div>
+  </body>
+</html>
