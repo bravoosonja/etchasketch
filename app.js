@@ -1,27 +1,44 @@
-const sizeBtns = document.querySelectorAll(".size");
-const modeBtns = document.querySelectorAll(".mode");
-let defaultMode = "";
+const container = document.querySelector(".container");
 
-function generateGrid(size = 16 * 16, cssClass = "small-grid") {
-  const canvas = document.getElementById("grids");
-  canvas.innerHTML = "";
-  canvas.classList.add(cssClass);
+//mode buttons
+const shakeBtn = document.getElementById("shake-btn");
 
-  for (leti = 0; i < size; i += 1) {
+//creates grid
+function createGrid() {
+  for (let i = 0; i < 256; i++) {
     const div = document.createElement("div");
-    canvas.appendChild(div);
+    div.classList.add("square");
+    container.appendChild(div);
   }
 }
 
+//choose grid size
+function selectGridSize() {
+  const sizeBtns = document.querySelectorAll(".size-btns");
+  sizeBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      resetStyle(sizeBtns);
+      if (button.classList.contains("small")) {
+        sizeBtns[0].classList.add("active");
+        createGrid(16 * 16, "small");
+      } else if (button.classList.contains("medium")) {
+        sizeBtns[1].classList.add("active");
+        createGrid(32 * 32, "medium");
+      } else if (button.classList.contains("large")) {
+        sizeBtns[2].classList.add("active");
+        createGrid(48 * 48, "large");
+      }
+    });
+  });
+}
+
+//sketches on mouse hover
 function startSketch(mode) {
   const grids = document.querySelectorAll("#grids>div");
   grids.forEach((item) => {
     item.count = 0;
     item.addEventListener("mouseenter", (e) => {
-      if (mode === defaultMode || mode === "" || currentMode === "") {
-        e.target.style.backgroundColor = "#B6E2D3";
-        e.target.style.opacity = 1;
-      } else if (mode === "rainbow" || currentMode === "rainbow") {
+      if (mode === "rainbow") {
         const rainbowPalette = [
           "#ffbe0b",
           "#fb5607",
@@ -37,28 +54,18 @@ function startSketch(mode) {
   });
 }
 
+//choose color
+function selectColor() {
+  const rainbowBtn = document.getElementById("rainbow-btn");
+  rainbowBtn.addEventListener("click", () => {});
+}
+
+//resets grid - shake button event listener
 function shake() {
-  const grids = document.querySelectorAll("#grids>div");
-  grids.forEach((item) => {
-    item.style.backgroundColor = "#B9B7BD";
-    item.style.opacity = "1";
+  shakeBtn.addEventListener("click", function () {
+    container.innerHTML = "";
+    container.style.setProperty("grid-template-columns", `repeat(16,2fr)`);
+    container.style.setProperty("grid-template-rows", `repeat(16, 2fr)`);
+    createGrid();
   });
 }
-
-function shakeListener() {
-  const shakeBtn = document.querySelector("#shake-btn");
-  shakeBtn.addEventListener("click", shake);
-}
-
-function changeSize() {
-  const small = 16 * 16;
-  const medium = 32 * 32;
-  const large = 48 * 48;
-}
-
-function start() {
-  generateGrid();
-  startSketch("rainbow");
-}
-
-start();
