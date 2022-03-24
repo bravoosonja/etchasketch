@@ -1,55 +1,67 @@
-const container = document.querySelector(".container");
-const userInput = document.getElementById("pixel-size");
-const shakeBtn = document.getElementById("shake-btn");
-const rainbowBtn = document.getElementById("rainbow-btn");
-
-//create grid
-function createGrid() {
-  for (i = 0; i < 256; i++) {
-    const div = document.createElement("div");
-    div.classList.add("grids");
-    container.appendChild(div);
+//create
+function createGrid(size) {
+  for (i = 0; i < size * size; i++) {
+    const container = document.querySelector(".container");
+    const squares = document.createElement("div");
+    squares.classList.add("grids");
+    squares.style.setProperty("grid-template-columns", `repeat(${size},1fr)`);
+    squares.style.setProperty("grid-template-rows", `repeat(${size},1fr)`);
+    container.appendChild(squares);
   }
 }
 
-function updateGrid() {
-  container.innerHTML = "";
-  container.style.setProperty(
-    "grid-template-columns",
-    `repeat (${userInput.value},2fr)`
-  );
+function choosePixel() {
+  const largeBtn = document.getElementById("large-btn");
 
-  for (i = 0; i < userInput.value * userInput.value; i++) {
-    const div = document.createElement("div");
-    div.classList.add("grids");
-    container.appendChild(div);
-  }
-  console.log(userInput.value);
-}
+  const smallBtn = document.getElementById("small-btn");
+  smallBtn.addEventListener("click", function () {
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+    createGrid(32);
+  });
 
-const square = document.querySelector("div");
-square.addEventListener("mouseover", function (event) {
-  event.target.classList.replace("grids", "color");
-});
+  const mediumBtn = document.getElementById("medium-btn");
+  mediumBtn.addEventListener("click", () => {
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+    createGrid(16);
+  });
 
-userInput.addEventListener("change", updateGrid);
-
-shakeBtn.addEventListener("click", function () {
-  container.innerHTML = "";
-  userInput.value = "";
-  container.style.setProperty("grid-template-columns", `repeat(16,2fr)`);
-  container.style.setProperty("grid-template-rows", `repeat(16,2fr)`);
-  createGrid();
-});
-
-function sketchRainbow() {
-  const rainbowColor = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"];
-  const randomColor = Math.floor(Math.random() * rainbowColor.length);
-  const square = document.querySelector("div");
-  square.addEventListener("mouseover", function (event) {
-    console.log("rainbow mode");
-    event.target.style.backgroundColor = rainbowColor[randomColor];
+  largeBtn.addEventListener("click", () => {
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+    createGrid(8);
   });
 }
 
-createGrid();
+function sketch() {
+  const square = document.querySelector("div");
+  square.addEventListener("mouseover", function (event) {
+    event.target.classList.replace("grids", "color");
+  });
+}
+
+//erase and reset the grid to 16 * 16
+function shake() {
+  const shakeBtn = document.getElementById("shake-btn");
+  shakeBtn.addEventListener("click", function () {
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+    createGrid(16);
+  });
+}
+
+// function sketchRainbow() {
+//   const rainbowColor = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"];
+//   const randomColor = Math.floor(Math.random() * rainbowColor.length);
+//   const square = document.querySelector("div");
+//   square.addEventListener("mouseover", function (event) {
+//     console.log("rainbow mode");
+//     event.target.style.backgroundColor = rainbowColor[randomColor];
+//   });
+// }
+
+createGrid(16);
+sketch();
+shake();
+choosePixel();
