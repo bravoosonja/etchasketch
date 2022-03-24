@@ -30,8 +30,7 @@ h1 {
     width: 60%;
     height: 65%;
     display: grid;
-    grid-template-columns: repeat(32, 2fr);
-    grid-template-rows: repeat(32, 2fr);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .grids {
