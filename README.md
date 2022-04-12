@@ -1,5 +1,5 @@
 # Introduction
-Objective is to create a web-browser version of something between a sketchpad and an Etch-A-Sketch using Javascript DOM manipulation. This is my third project using Javascript.
+Objective is to create a web-browser version of something between a sketchpad and an Etch-A-Sketch using Javascript DOM manipulation and CSS grid. This is my third project using Javascript.
 
 [👉Live demo](https://bravoosonja.github.io/etchasketch)
 
