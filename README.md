@@ -1,8 +1,11 @@
-# Introduction
+# Overview
 Objective is to create a web-browser version of something between a sketchpad and an Etch-A-Sketch using Javascript DOM manipulation and CSS grid. This is my third project using Javascript.
+
+## Demo
 
 [👉Live demo](https://bravoosonja.github.io/etchasketch)
 
+## Features
 * **1 Color Mode** allows to sketch on mouse over with a single default color
 * **Random Mode** allows to sketch on mouse over with 5 colors chosen randomely
 * **Shake** deletes the sketch and resets the grid to the selected grid size
@@ -10,7 +13,6 @@ Objective is to create a web-browser version of something between a sketchpad an
 * **Medium Pixel** creates a grid of 16 X 16
 * **Large Pizel** creates a grid of 8 X 8
 
-![screenshot](Screenshot.jpg)
 # Skills used
 - HTML
 - CSS
