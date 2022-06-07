@@ -4,6 +4,7 @@ Objective is to create a web-browser version of something between a sketchpad an
 ## Demo
 
 [👉Live demo](https://bravoosonja.github.io/etchasketch)
+
 ![demo](etchasketchdemo.gif)
 
 ## Features
